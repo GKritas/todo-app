@@ -1,42 +1,32 @@
-import { useState } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './TodoApp.css'
+import { LogOutComponent } from './LogOutComponent'
+import { FooterComponent } from './FooterComponent'
+import { HeaderComponent } from './HeaderComponent'
+import { ListTodosComponent } from './ListTodosComponent'
+import { ErrorComponent } from './ErrorComponent'
+import { WelcomeComponent } from './WelcomeComponent'
+import { LoginComponent } from './LoginComponent'
+import AuthProvider from './security/AuthContext'
 
 export default function TodoApp() {
-    return(
+    return (
         <div className="TodoApp">
-            <LoginComponent/>
-            {/* <WelcomeComponent/> */}
-        </div>
-    )
-}
+            <AuthProvider>
+                <BrowserRouter>
+                    <HeaderComponent />
+                    <Routes>
+                        <Route path='/' element={<LoginComponent />} />
+                        <Route path='/login' element={<LoginComponent />} />
+                        <Route path='/welcome/:username' element={<WelcomeComponent />} />
+                        <Route path='/todos' element={<ListTodosComponent />} />
+                        <Route path='/logout' element={<LogOutComponent />} />
+                        <Route path='*' element={<ErrorComponent />} />
+                    </Routes>
+                    <FooterComponent />
+                </BrowserRouter>
+            </AuthProvider>
 
-
-function LoginComponent() {
-
-    const [username, setUsername] = useState('username')
-    return(
-        <div className="Login">
-            <div className="LoginForm">
-                <div>
-                    <label>User Name</label>
-                    <input type="text" name="username" value={username}/>
-                </div>
-                <div>
-                    <label>Password</label>
-                    <input type="password" name="password" value="gk5121993"/>
-                </div>
-                <div>
-                    <button type="button" name="login">Login</button>
-                </div>
-            </div>
-        </div>
-    )
-}
-
-function WelcomeComponent() {
-    return(
-        <div className="Welcome">
-            Welcome Component
         </div>
     )
 }
