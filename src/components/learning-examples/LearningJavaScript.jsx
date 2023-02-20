@@ -8,9 +8,7 @@ const person = {
     profiles: ["twitter", "linkedin", "instagram"],
     printProfile: () => {
         person.profiles.map(
-            (profile)=> {
-                console.log(profile)
-            }
+            profile => console.log(profile)
         )
     }
 }
