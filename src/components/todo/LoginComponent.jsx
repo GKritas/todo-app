@@ -4,8 +4,9 @@ import { useAuth } from './security/AuthContext';
 
 export function LoginComponent() {
 
-    const [username, setUsername] = useState('username');
-    const [password, setPassword] = useState('password');
+    const [username, setUsername] = useState('george');
+
+    const [password, setPassword] = useState('');
 
     const [showErrorMessage, setShowErrorMessage] = useState(false);
 
@@ -21,8 +22,8 @@ export function LoginComponent() {
         setPassword(event.target.value);
     }
 
-    function handleSubmit() {
-        if (authContext.login(username, password)) {
+    async function handleSubmit() {
+        if (await authContext.login(username, password)) {
             navigate(`/welcome/${username}`);
         } else {
             setShowErrorMessage(true);
@@ -47,5 +48,5 @@ export function LoginComponent() {
                 </div>
             </div>
         </div>
-    );
+    )
 }

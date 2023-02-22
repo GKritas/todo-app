@@ -15,11 +15,11 @@ export function HeaderComponent() {
             <div className="container">
                 <div className="row">
                     <nav className="navbar navbar-expand-lg">
-                        <a className="navbar-brand ms-2 fs-2 fw-bold text-black" href="https://www.in28minutes.com">in28minutes</a>
+                        <a className="navbar-brand ms-2 fs-2 fw-bold text-black" href="https://github.com/GKritas">GKritas</a>
                         <div className="collapse navbar-collapse">
                             <ul className="navbar-nav">
                                 <li className="nav-item fs-5">
-                                    {isAuthenticated && <Link className="nav-link" to="/welcome/in28minutes">Home</Link>}
+                                    {isAuthenticated && <Link className="nav-link" to="welcome/george">Home</Link>}
                                 </li>
                                 <li className="nav-item fs-5">
                                     {isAuthenticated && <Link className="nav-link" to="/todos">Todos</Link>}
